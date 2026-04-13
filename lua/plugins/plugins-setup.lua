@@ -17,13 +17,6 @@ local plugins = {
 	"nvim-tree/nvim-tree.lua",                             -- 文档树
 	"nvim-tree/nvim-web-devicons",                         -- 文档树图标
 	"christoomey/vim-tmux-navigator",                      -- 用ctl-hjkl来定位窗口
-	{
-		"nvim-treesitter/nvim-treesitter",                 -- 语法高亮
-		run = ':TSUpdate',                                 -- 确保在安装后更新
-		config = function()
-			require 'nvim-treesitter.install'.compilers = { "gcc" } -- 只使用gcc作为编译器
-		end,
-	},
 	'HiPhish/rainbow-delimiters.nvim',
 	{
 		"williamboman/mason.nvim",
