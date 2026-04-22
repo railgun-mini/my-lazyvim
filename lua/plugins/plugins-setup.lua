@@ -12,7 +12,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	"folke/tokyonight.nvim",                                -- 主题
+	-- 主题
+	"catppuccin/nvim",
+	"olimorris/onedarkpro.nvim",
+	"folke/tokyonight.nvim",
+	-- 文件搜索
+	{
+		'nvim-telescope/telescope.nvim', --文件搜索
+		tag = 'v0.2.1',
+		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
+	
 	"nvim-lualine/lualine.nvim",                            -- 状态栏
 	"nvim-tree/nvim-tree.lua",                              -- 文档树
 	"nvim-tree/nvim-web-devicons",                          -- 文档树图标

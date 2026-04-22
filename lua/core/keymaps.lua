@@ -25,6 +25,6 @@ keymap.set("n", "<leader>x", ":bdelete<CR>")
 
 -- ---------- 插件 ---------- ---
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+-- keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<CR>", { desc = "Aerial Outline" })
