@@ -5,9 +5,9 @@ opt.relativenumber = true
 opt.number = true
 
 -- 缩进
-opt.tabstop = 2 -- 制表符
-opt.shiftwidth = 2 -- 缩进宽度
-opt.expandtab = true -- 用空格代替制表符
+opt.tabstop = 2       -- 制表符
+opt.shiftwidth = 2    -- 缩进宽度
+opt.expandtab = true  -- 用空格代替制表符
 opt.autoindent = true -- 自动缩进
 
 -- 防止包裹
@@ -33,4 +33,4 @@ opt.smartcase = true
 -- 外观
 opt.termguicolors = true
 opt.signcolumn = "yes"
-vim.cmd [[colorscheme tokyonight-moon]]
+vim.cmd.colorscheme('tokyonight-moon')
