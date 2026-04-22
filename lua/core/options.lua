@@ -34,3 +34,6 @@ opt.smartcase = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 -- vim.cmd [[colorscheme tokyonight-moon]]
+
+opt.signcolumn = 'yes:1'
+opt.confirm = true
