@@ -11,6 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 local plugins = {
+    {
+        "goolord/alpha-nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        }
+    },
     -- 主题
     "catppuccin/nvim",
     -- 文件查找
@@ -19,50 +25,32 @@ local plugins = {
         tag = 'v0.2.1',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
+    -- 文件树
+    -- "stevearc/oil.nvim",
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+    },
     -- lsp
     {
         "williamboman/mason.nvim",
         lazy = false,
-        config = function()
-            require("mason").setup()
-        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
-        opts = {
-            auto_install = true,
-        },
     },
     {
         "neovim/nvim-lspconfig",
         lazy = false,
-        config = function()
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-            local lspconfig = require("lspconfig")
-            lspconfig.tsserver.setup({
-                capabilities = capabilities
-            })
-            lspconfig.solargraph.setup({
-                capabilities = capabilities
-            })
-            lspconfig.html.setup({
-                capabilities = capabilities
-            })
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities
-            })
-
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-        end,
     },
-    {
-        "hrsh7th/cmp-nvim-lsp"
-    },
+    -- completion
+    "hrsh7th/cmp-nvim-lsp",
     {
         "L3MON4D3/LuaSnip",
         dependencies = {
@@ -70,38 +58,12 @@ local plugins = {
             "rafamadriz/friendly-snippets",
         },
     },
+    "hrsh7th/nvim-cmp",
     {
-        "hrsh7th/nvim-cmp",
-        config = function()
-            local cmp = require("cmp")
-            require("luasnip.loaders.from_vscode").lazy_load()
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                }),
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" }, -- For luasnip users.
-                }, {
-                    { name = "buffer" },
-                }),
-            })
-        end,
+        "nvimtools/none-ls.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
     },
+
 }
 
 local opts = {}
